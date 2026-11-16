@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHANTOM | Coming Soon</title>
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* CSS Reset & Variables */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      :root {
+        --bg-deep: #050505;
+        --bg-card: #111111;
+        --silver-primary: #e0e0e0;
+        --silver-secondary: #a0a0a0;
+        --silver-accent: #c0c0c0;
+        --border-silver: rgba(224, 224, 224, 0.15);
+        --whatsapp-green: #10b981;
+      }
+
+      body {
+        background-color: var(--bg-deep);
+        color: var(--silver-primary);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Background Glow Effect */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(192, 192, 192, 0.08) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* Main Container */
+      .coming-soon-container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 800px;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+      }
+
+      /* Logo Styling */
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 30px;
+      }
+
+      .logo i {
+        font-size: 2.2rem;
+        background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .logo span {
+        background: linear-gradient(135deg, #ffffff 0%, #777777 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Badge Tag */
+      .badge-coming {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-silver);
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--silver-secondary);
+        margin-bottom: 25px;
+      }
+
+      /* Hero Headings */
+      h1 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: #ffffff;
+      }
+
+      h1 span {
+        background: linear-gradient(135deg, #dfdfdf 0%, #666666 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p.subtitle {
+        font-size: 1.1rem;
+        color: var(--silver-secondary);
+        max-width: 550px;
+        line-height: 1.6;
+        margin-bottom: 40px;
+      }
+
+      /* Countdown Grid */
+      .countdown {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .time-box {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-silver);
+        padding: 15px 20px;
+        border-radius: 10px;
+        min-width: 80px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .time-box span {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 5px;
+      }
+
+      .time-box label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--silver-secondary);
+      }
+
+      /* Action Buttons */
+      .actions {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn-whatsapp {
+        background-color: var(--whatsapp-green);
+        color: #ffffff;
+        padding: 14px 28px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+      }
+
+      .btn-whatsapp:hover {
+        background-color: #059669;
+        transform: translateY(-2px);
+      }
+
+      .ar-text {
+        font-family: "Cairo", sans-serif;
+      }
+
+      /* Footer Info */
+      footer {
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--silver-secondary);
+        border-top: 1px solid var(--border-silver);
+        width: 100%;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.3rem;
+        }
+        .countdown {
+          gap: 10px;
+        }
+        .time-box {
+          min-width: 65px;
+          padding: 10px;
+        }
+        .time-box span {
+          font-size: 1.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="coming-soon-container">
+      <!-- Brand Logo -->
+      <div class="logo">
+        <i class="fa-solid fa-p"></i>
+        <span>Phantom</span>
+      </div>
+
+      <!-- Tag -->
+      <div class="badge-coming">Launching Soon</div>
+
+      <!-- Main Title -->
+      <h1>A New Standard In <span>Shoe Care</span> Is Coming</h1>
+
+      <p class="subtitle">
+        We are crafting an elite experience for sneaker maintenance and premium
+        protection. Stay tuned for the official grand opening.
+      </p>
+
+      <!-- Countdown Timer (Optional visual addition) -->
+      <div class="countdown">
+        <div class="time-box">
+          <span id="days">--</span>
+          <label>Days</label>
+        </div>
+        <div class="time-box">
+          <span id="hours">--</span>
+          <label>Hours</label>
+        </div>
+        <div class="time-box">
+          <span id="minutes">--</span>
+          <label>Mins</label>
+        </div>
+        <div class="time-box">
+          <span id="seconds">--</span>
+          <label>Secs</label>
+        </div>
+      </div>
+
+      <!-- Direct WhatsApp Action -->
+      <div class="actions">
+        <a
+          href="https://wa.me/201007697664?text=Hello%20Phantom,%20I%20want%20to%20inquire%20about%20the%20upcoming%20launch"
+          class="btn-whatsapp"
+          target="_blank"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+          <span class="ar-text">تواصل معنا عبر واتساب</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>&copy; 2026 Phantom Shoes Care. All Rights Reserved.</footer>
+
+    <script>
+      // Simple script for countdown simulation or target date (e.g., 7 days from now)
+      const launchDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("hours").innerText = String(hours).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("minutes").innerText = String(minutes).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("seconds").innerText = String(seconds).padStart(
+          2,
+          "0",
+        );
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>

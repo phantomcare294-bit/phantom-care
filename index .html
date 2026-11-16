@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHANTOM Shoe Care | Premium Sneakers</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Backdrop Overlay for Drawers -->
+    <div class="panel-backdrop" id="panelBackdrop"></div>
+
+    <!-- 1. HEADER (Left: Menu Square + Search | Center: Flame 'P' + PHANTOM | Right: Cart) -->
+    <header>
+      <!-- Left Side: Square Menu Button & Search Icon -->
+      <div class="header-left">
+        <button
+          type="button"
+          class="header-icon-box"
+          id="menuBtn"
+          aria-label="Open Menu"
+          title="Menu"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <button
+          type="button"
+          class="header-icon-box"
+          id="searchToggleBtn"
+          aria-label="Search Products"
+          title="Search"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <!-- Center: Flame 'P' Logo + PHANTOM Wordmark -->
+      <div class="header-center">
+        <a href="#" class="brand-logo-link">
+          <img
+            src="phantom-logo.png"
+            alt=""
+            class="brand-logo-mark"
+            aria-hidden="true"
+          />
+          <div class="brand-logo-text">
+            <span class="brand-logo-title">PHANTOM</span>
+            <span class="brand-logo-sub">PREMIUM SHOE CARE</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right Side: Shopping Cart Button with Counter Badge -->
+      <div class="header-right">
+        <button
+          type="button"
+          class="cart-icon-btn"
+          id="cartBtn"
+          aria-label="Open Cart"
+          title="Cart"
+        >
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-badge-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Live Search Dropdown Bar -->
+    <div class="search-bar-overlay" id="searchOverlay">
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass" style="color: #888"></i>
+        <input
+          type="text"
+          id="liveSearchInput"
+          placeholder="Search for foam, brush, towel, socks, laces, or the full kit..."
+        />
+        <button
+          type="button"
+          id="closeSearchBtn"
+          style="
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 22px;
+            cursor: pointer;
+          "
+        >
+          ×
+        </button>
+      </div>
+      <div class="search-results-list" id="searchResultsList"></div>
+    </div>
+
+    <!-- Left Navigation Drawer -->
+    <aside class="sidebar-panel" id="menuSidebar">
+      <div class="panel-header">
+        <div style="display: flex; align-items: center; gap: 8px">
+          <i class="fa-solid fa-p" style="color: #fff"></i>
+          <span style="font-weight: 800; letter-spacing: 1px"
+            >PHANTOM MENU</span
+          >
+        </div>
+        <button type="button" class="close-panel-btn" id="closeMenu">×</button>
+      </div>
+      <ul class="nav-drawer-list">
+        <li>
+          <a href="#" class="drawer-nav-link">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+        </li>
+        <li>
+          <a href="#products" class="drawer-nav-link">
+            <i class="fa-solid fa-box-open"></i> PHANTOM Collection
+          </a>
+        </li>
+        <li>
+          <a href="#shop" class="drawer-nav-link">
+            <i class="fa-solid fa-store"></i> All Products
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="drawer-nav-link">
+            <i class="fa-solid fa-shield-halved"></i> Why Choose Us
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="drawer-nav-link">
+            <i class="fa-solid fa-headset"></i> Contact Us
+          </a>
+        </li>
+      </ul>
+      <div
+        style="margin-top: auto; border-top: 1px solid #222; padding-top: 16px"
+      >
+        <a
+          href="https://wa.me/201007697664?text=Hello%20PHANTOM,%20I%20would%20like%20to%20order."
+          target="_blank"
+          rel="noopener"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #10b981;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+          "
+        >
+          <i class="fa-brands fa-whatsapp"></i> Order Now
+        </a>
+      </div>
+    </aside>
+
+    <!-- Right Cart Drawer -->
+    <aside class="sidebar-panel right-panel" id="cartSidebar">
+      <div class="panel-header">
+        <h3>Shopping Cart</h3>
+        <button type="button" class="close-panel-btn" id="closeCart">×</button>
+      </div>
+      <div id="cartItems" style="flex: 1; overflow-y: auto">
+        <p
+          style="color: #777; text-align: center; margin-top: 20px"
+          class="ar-text"
+        >
+          Your cart is empty.
+        </p>
+      </div>
+      <div style="border-top: 1px solid #222; padding-top: 15px">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 700;
+          "
+          class="ar-text"
+        >
+          <span>Total:</span> <span><span id="cartTotal">0</span> EGP</span>
+        </div>
+        <button
+          type="button"
+          id="checkoutWhatsappBtn"
+          class="ar-text"
+          style="
+            width: 100%;
+            background: #10b981;
+            color: #fff;
+            border: none;
+            padding: 13px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+          "
+        >
+          <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
+        </button>
+      </div>
+    </aside>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>A NEW STANDARD IN <span>SHOE CARE</span></h1>
+        <p>
+          Premium Sneakers Care & Maintenance.<br />Best Quality. Order Easily
+          on WhatsApp.
+        </p>
+        <a href="#products" class="btn-shop"
+          ><i class="fa-solid fa-cart-shopping"></i> Shop Now</a
+        >
+      </div>
+      <img
+        src="img-home/kit.png"
+        onerror="
+          this.onerror = null;
+          this.style.display = 'none';
+        "
+        alt="Featured Phantom Shoe Care Kit"
+        class="hero-shoe-img"
+      />
+    </section>
+
+    <!-- 3. TRUST BADGES -->
+    <section class="badges-container">
+      <div class="badge-card">
+        <i class="fa-solid fa-award"></i>
+        <div class="badge-text">
+          <h4>Premium Quality</h4>
+          <p>Best materials & brand you can trust</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div class="badge-text">
+          <h4>Fast Delivery</h4>
+          <p>Quick delivery to your door</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div class="badge-text">
+          <h4>100% Original</h4>
+          <p>Original care products guaranteed</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <i class="fa-regular fa-comment-dots"></i>
+        <div class="badge-text">
+          <h4>Easy Order</h4>
+          <p>Just message us on WhatsApp</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="before-after-section" aria-labelledby="beforeAfterTitle">
+      <div class="before-after-intro">
+        <span class="before-after-kicker">PHANTOM DEEP CLEAN</span>
+        <h2 id="beforeAfterTitle">See the Difference</h2>
+        <p>Drag the slider to compare the shoes before and after cleaning.</p>
+      </div>
+      <div class="before-after-frame" data-before-after>
+        <img
+          class="before-after-image before-after-image--clean"
+          src="img-home/shoe-clean.JPG"
+          alt="Shoes after cleaning"
+          loading="lazy"
+        />
+        <img
+          class="before-after-image before-after-image--dirty"
+          src="img-home/shoe-dirty.JPG"
+          alt="Shoes before cleaning"
+          loading="lazy"
+        />
+        <span class="before-after-label before-after-label--before"
+          >Before Cleaning</span
+        >
+        <span class="before-after-label before-after-label--after"
+          >After Cleaning</span
+        >
+        <input
+          class="before-after-range"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Drag to compare the shoes before and after cleaning"
+          aria-valuetext="Half before cleaning, half after cleaning"
+        />
+        <span class="before-after-divider" aria-hidden="true"></span>
+        <span class="before-after-handle" aria-hidden="true">
+          <i class="fa-solid fa-arrows-left-right"></i>
+        </span>
+      </div>
+    </section>
+
+    <!-- 4. FEATURED PRODUCTS SECTION -->
+    <section class="products-section" id="products">
+      <div class="section-header">
+        <h2>PHANTOM Collection</h2>
+        <div class="header-btns">
+          <a href="#shop" class="btn-view-all">View All Products</a>
+         
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <div
+          class="product-card"
+          data-id="1"
+          data-name="Phantom Shoes Care Kit"
+          data-price="269"
+          data-subtitle="Complete box (150ml foam + brush + microfiber towel)"
+        >
+          <span class="product-badge">Best Seller</span>
+          <div>
+            <div class="product-img-wrapper">
+              <a
+                href="product/kit-foam/kit.html"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="img-home/kit.JPG" alt="Phantom Shoes Care Kit"
+              /></a>
+            </div>
+            <div class="product-info">
+              <h3>Phantom Shoes Care Kit</h3>
+              <span class="ar-subtitle"
+                >Complete box (150ml foam + brush + microfiber towel)</span
+              >
+              <div class="price">
+                <span class="price-current">269 EGP</span>
+                <del class="price-original">350 EGP</del>
+                <span class="price-discount">Sale 23%</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="1"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="1"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="2"
+          data-name="Phantom Bottle Foam 150ml"
+          data-price="176"
+          data-subtitle="Instant dry cleaning foam (150ml)"
+        >
+          <span class="product-badge">150ml</span>
+          <div>
+            <div class="product-img-wrapper">
+              <a
+                href="product/foam-150ml/foam-150ml.html"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="img-home/foam-150ml.JPG"
+                  alt="Phantom Bottle Foam 150ml"
+                />
+              </a>
+            </div>
+            <div class="product-info">
+              <h3>Phantom Bottle Foam 150ml</h3>
+              <span class="ar-subtitle">Instant dry cleaning foam (150ml)</span>
+              <div class="price">
+                <span class="price-current">176 EGP</span>
+                <del class="price-original">220 EGP</del>
+                <span class="price-discount">Sale 20%</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="2"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="2"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="3"
+          data-name="Phantom Wooden Brush"
+          data-price="99"
+          data-subtitle="Professional cleaning brush with natural wood handle"
+        >
+          <div>
+            <div class="product-img-wrapper">
+              <a href="product/brush/brush.html" target="_blank" rel="noopener">
+                <img src="img-home/brush.JPG" alt="Phantom Wooden Brush" />
+              </a>
+            </div>
+            <div class="product-info">
+              <h3>Phantom Wooden Brush</h3>
+              <span class="ar-subtitle"
+                >Professional cleaning brush with natural wood handle</span
+              >
+              <div class="price">
+                <span class="price-current">99 EGP</span>
+                <del class="price-original">150 EGP</del>
+                <span class="price-discount">Sale 34%</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="3"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="3"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="4"
+          data-name="Microfiber Towel"
+          data-price="75"
+          data-subtitle="Ultra-absorbent, ultra-soft microfiber towel"
+        >
+          <div>
+            <div class="product-img-wrapper">
+              <a href="" target="_blank" rel="noopener">
+                <img src="img-home/microfiber -towel.PNG" alt="Microfiber Towel" />
+              </a>
+            </div>
+            <div class="product-info">
+              <h3>Microfiber Towel</h3>
+              <span class="ar-subtitle"
+                >Ultra-absorbent, ultra-soft microfiber towel</span
+              >
+              <div class="price">75 EGP</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="4"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="4"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="5"
+          data-name="Phantom Sneaker Socks"
+          data-price="75"
+          data-subtitle="Premium padded cotton sneaker socks"
+        >
+          <span class="product-badge">Cotton</span>
+          <div>
+            <div class="product-img-wrapper">
+              <a href="product/sneaker-socks/sneaker-socks.html" target="_blank" rel="noopener">
+                <img
+                  src="img-home/sneaker-socks.JPG"
+                  alt="Phantom Sneaker Socks"
+                />
+              </a>
+            </div>
+            <div class="product-info">
+              <h3>Phantom Sneaker Socks</h3>
+              <span class="ar-subtitle"
+                >Premium padded cotton sneaker socks</span
+              >
+              <div class="price">70 EGP</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="5"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="5"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="6"
+          data-name="Phantom Shoelaces"
+          data-price="75"
+          data-subtitle="Sneaker laces with premium metal tips (120cm)"
+        >
+          <div>
+            <div class="product-img-wrapper">
+              <a href="product/shoelaces/shoelaces.html" target="_blank" rel="noopener">
+              <img
+                src="img-home/shoelaces.JPG"
+                alt="Phantom Shoelaces"
+              />
+              </a>
+            </div>
+            <div class="product-info">
+              <h3>Phantom Shoelaces</h3>
+              <span class="ar-subtitle"
+                >Sneaker laces with premium metal tips (120cm)</span
+              >
+              <div class="price">75 EGP</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="6"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="6"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4b. ALL PRODUCTS PAGE (shown when URL hash is #shop) -->
+    <section class="products-section shop-page" id="shopPage">
+      <a href="#" class="shop-back-link"
+        ><i class="fa-solid fa-arrow-left"></i> Back to Home</a
+      >
+      <div class="section-header">
+        <h2>All Products</h2>
+      </div>
+      <p class="shop-note">
+        Choose your products, then we'll ask for your details before continuing
+        the Order Now.
+      </p>
+      <div class="products-grid" id="shopGrid">
+        <div
+          class="product-card"
+          data-id="1"
+          data-name="Phantom Shoes Care Kit"
+          data-price="269"
+          data-subtitle="Complete box (150ml foam + brush + microfiber towel)"
+        >
+          <span class="product-badge">Best Seller</span>
+          <div>
+            <div class="product-img-wrapper">
+              <img src="img-home/kit.JPG" alt="Phantom Shoes Care Kit" />
+            </div>
+            <div class="product-info">
+              <h3>Phantom Shoes Care Kit</h3>
+              <span class="ar-subtitle"
+                >Complete box (150ml foam + brush + microfiber towel)</span
+              >
+              <div class="price">
+                <span class="price-current">269 EGP</span>
+                <del class="price-original">350 EGP</del>
+                <span class="price-discount">Sale 23%</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="1"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="1"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="2"
+          data-name="Phantom Cleaning Foam"
+          data-price="179"
+          data-subtitle="Instant dry cleaning foam (150ml)"
+        >
+          <span class="product-badge">150ml</span>
+          <div>
+            <div class="product-img-wrapper">
+              <img src="images/foam.jpg" alt="Phantom Cleaning Foam" />
+            </div>
+            <div class="product-info">
+              <h3>Phantom Cleaning Foam</h3>
+              <span class="ar-subtitle">Instant dry cleaning foam (150ml)</span>
+              <div class="price">179 EGP</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="2"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="2"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="3"
+          data-name="Phantom Wooden Brush"
+          data-price="115"
+          data-subtitle="Professional cleaning brush with natural wood handle"
+        >
+          <div>
+            <div class="product-img-wrapper">
+              <img src="images/brush.jpg" alt="Phantom Wooden Brush" />
+            </div>
+            <div class="product-info">
+              <h3>Phantom Wooden Brush</h3>
+              <span class="ar-subtitle"
+                >Professional cleaning brush with natural wood handle</span
+              >
+              <div class="price">115 EGP</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="3"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="3"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="4"
+          data-name="Microfiber Towel"
+          data-price="85"
+          data-subtitle="Ultra-absorbent, ultra-soft microfiber towel"
+        >
+          <div>
+            <div class="product-img-wrapper">
+              <img src="images/towel.jpg" alt="Microfiber Towel" />
+            </div>
+            <div class="product-info">
+              <h3>Microfiber Towel</h3>
+              <span class="ar-subtitle"
+                >Ultra-absorbent, ultra-soft microfiber towel</span
+              >
+              <div class="price">85 EGP</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="4"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="4"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="5"
+          data-name="Phantom Sneaker Socks"
+          data-price="70"
+          data-subtitle="Premium padded cotton sneaker socks"
+        >
+          <span class="product-badge">Cotton</span>
+          <div>
+            <div class="product-img-wrapper">
+              <img
+                src="img-home/sneaker-socks.JPG"
+                alt="Phantom Sneaker Socks"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Phantom Sneaker Socks</h3>
+              <span class="ar-subtitle"
+                >Premium padded cotton sneaker socks</span
+              >
+              <div class="price">
+                <span class="price-current">70 EGP</span>
+                <del class="price-original">150 EGP</del>
+                <span class="price-discount">Sale 53%</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="5"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="5"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-id="6"
+          data-name="Phantom Shoelaces"
+          data-price="75"
+          data-subtitle="Sneaker laces with premium metal tips (120cm)"
+        >
+          <div>
+            <div class="product-img-wrapper">
+              <a href="product/shoelaces/shoelaces.html" target="_blank" rel="noopener">
+              <img
+                src="img-home/shoelaces.JPG"
+                alt="Phantom Shoelaces"
+              />
+              </a>
+            </div>
+            <div class="product-info">
+              <h3>Phantom Shoelaces</h3>
+              <span class="ar-subtitle"
+                >Sneaker laces with premium metal tips (120cm)</span
+              >
+              <div class="price">
+                <span class="price-current">70 EGP</span>
+                <del class="price-original">150 EGP</del>
+                <span class="price-discount">Sale 50%</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="btn-add-cart ar-text"
+              data-action="add-cart"
+              data-id="6"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button
+              type="button"
+              class="btn-order-whatsapp"
+              data-action="order-now"
+              data-id="6"
+            >
+              <span class="ar-text">Order Now</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. WHY CHOOSE PHANTOM -->
+    <section class="why-choose-us" id="about">
+      <h2>Why Choose PHANTOM?</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <i class="fa-regular fa-star"></i>
+          <h4>Best Quality</h4>
+          <p>We offer top quality shoe care products.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fa-solid fa-tag"></i>
+          <h4>Best Prices</h4>
+          <p>Competitive prices for everyone.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fa-solid fa-headset"></i>
+          <h4>Support 24/7</h4>
+          <p>We're here to help you anytime.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fa-regular fa-smile"></i>
+          <h4>Happy Customers</h4>
+          <p>Trusted by hundreds of customers.</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- 6. FOLLOW US ON INSTAGRAM -->
+    <section class="instagram-section">
+      <h2>Follow Us On Instagram</h2>
+      <div class="insta-grid">
+        <div class="insta-item">
+          <img
+            src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=300&auto=format&fit=crop"
+            alt="Instagram shoe 1"
+          />
+        </div>
+        <div class="insta-item">
+          <img
+            src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=300&auto=format&fit=crop"
+            alt="Instagram shoe 2"
+          />
+        </div>
+        <div class="insta-item">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=300&auto=format&fit=crop"
+            alt="Instagram shoe 3"
+          />
+        </div>
+        <div class="insta-item">
+          <img
+            src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=300&auto=format&fit=crop"
+            alt="Instagram shoe 4"
+          />
+        </div>
+        <div class="insta-item">
+          <img
+            src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=300&auto=format&fit=crop"
+            alt="Instagram shoe 5"
+          />
+        </div>
+        <div class="insta-item">
+          <img
+            src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=300&auto=format&fit=crop"
+            alt="Instagram shoe 6"
+          />
+        </div>
+      </div>
+    </section>
+
+    
+ 
+
+    <!-- 7. FOOTER -->
+    <footer id="contact">
+      <div class="footer-brand">
+        <a href="#" class="brand-logo-link footer-logo" aria-label="PHANTOM home">
+          <img
+            src="phantom-logo.png"
+            alt=""
+            class="brand-logo-mark"
+            aria-hidden="true"
+          />
+          <div class="brand-logo-text">
+            <span class="brand-logo-title">PHANTOM</span>
+            <span class="brand-logo-sub">PREMIUM SHOE CARE</span>
+          </div>
+        </a>
+        <p>
+          Premium sneakers and shoe care, with reliable service and easy
+          ordering through WhatsApp.
+        </p>
+      </div>
+
+      <nav class="footer-links" aria-label="Explore">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#products">PHANTOM Collection</a></li>
+          <li><a href="#shop">All Products</a></li>
+          <li><a href="#about">Why Choose Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-links footer-products" aria-label="Product pages">
+        <h4>Shop Products</h4>
+        <ul>
+          <li><a href="product/kit-foam/kit.html">Complete Shoe Care Kit</a></li>
+          <li>
+            <a href="product/foam-150ml/foam-150ml.html">Cleaning Foam 150ml</a>
+          </li>
+          <li><a href="product/brush/brush.html">Wooden Cleaning Brush</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <div class="contact-item">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <a
+            href="https://wa.me/message/DNN5ZANJIBK7E1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >+20 1007697664</a
+          >
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          <a
+            href="https://www.instagram.com/phantomshoescare/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@phantomshoescare</a
+          >
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+          <a
+            href="https://www.tiktok.com/@phantomshoescare"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@phantomshoescare</a
+          >
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+          <a
+            href="https://www.facebook.com/share/1E3GbitKws/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Phantom Shoe Care</a
+          >
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 PHANTOM SHOES CARE. All rights reserved.</span>
+        <a href="#">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <!-- Order Details Modal -->
+    <div class="order-modal" id="orderModal" role="dialog" aria-modal="true">
+      <div class="order-modal-box">
+        <button
+          type="button"
+          class="order-close"
+          id="closeOrderModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+        <h3>Order Details</h3>
+        <p class="order-sub">
+          Enter your details, then we'll take you to WhatsApp to confirm the
+          order.
+        </p>
+        <div class="order-summary" id="orderSummary"></div>
+        <form id="orderForm" novalidate>
+          <div class="order-field" data-field="name">
+            <label for="ordName">Full Name *</label>
+            <input type="text" id="ordName" autocomplete="name" />
+            <div class="order-error">Please enter your name.</div>
+          </div>
+          <div class="order-field" data-field="phone">
+            <label for="ordPhone">Mobile Number *</label>
+            <input
+              type="tel"
+              id="ordPhone"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="01XXXXXXXXX"
+            />
+            <div class="order-error">Please enter a valid mobile number.</div>
+          </div>
+          <div class="order-field" data-field="city">
+            <label for="ordCity">Governorate / City *</label>
+            <input type="text" id="ordCity" autocomplete="address-level1" />
+            <div class="order-error">
+              Please enter your governorate or city.
+            </div>
+          </div>
+          <div class="order-field" data-field="address">
+            <label for="ordAddress">Full Address *</label>
+            <textarea id="ordAddress" autocomplete="street-address"></textarea>
+            <div class="order-error">Please enter your address.</div>
+          </div>
+          <div class="order-field">
+            <label for="ordNotes">Notes (optional)</label>
+            <textarea id="ordNotes"></textarea>
+          </div>
+          <button type="submit" class="order-submit">
+            <i class="fa-brands fa-whatsapp"></i> Continue to WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
