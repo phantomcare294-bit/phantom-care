@@ -22,16 +22,19 @@
     <!-- 1. HEADER (matching index.html) -->
     <header>
       <div class="header-left">
-        <a
-          href="index.html#products"
+        <button
+          type="button"
+          id="productMenuButton"
           class="header-icon-box"
-          aria-label="Browse collection"
-          title="Browse collection"
+          aria-label="Open menu"
+          aria-controls="productMenuPanel"
+          aria-expanded="false"
+          title="Menu"
         >
           <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </a>
+        </button>
         <a
-          href="index.html#shop"
+          href="../../index.html#shop"
           class="header-icon-box"
           aria-label="Browse all products"
           title="Browse all products"
@@ -41,7 +44,7 @@
       </div>
 
       <div class="header-center">
-        <a href="index.html" class="brand-logo-link" aria-label="PHANTOM home">
+        <a href="../../index.html" class="brand-logo-link" aria-label="PHANTOM home">
           <img
             src="../../phantom-logo.png"
             alt=""
@@ -68,6 +71,35 @@
         </button>
       </div>
     </header>
+
+    <div class="product-menu-backdrop" id="productMenuBackdrop"></div>
+    <aside
+      class="product-menu-panel"
+      id="productMenuPanel"
+      aria-hidden="true"
+      aria-label="PHANTOM menu"
+    >
+      <div class="product-menu-header">
+        <h2>PHANTOM MENU</h2>
+        <button
+          type="button"
+          class="product-menu-close"
+          id="closeProductMenu"
+          aria-label="Close menu"
+        >
+          ×
+        </button>
+      </div>
+      <nav class="product-menu-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../index.html#products">PHANTOM Collection</a></li>
+          <li><a href="../../index.html#shop">All Products</a></li>
+          <li><a href="../../index.html#about">Why Choose Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
 
     <!-- 2. PRODUCT DETAIL SECTION -->
     <main
@@ -344,10 +376,10 @@
       <nav class="footer-links" aria-label="Explore">
         <h4>Explore</h4>
         <ul>
-          <li><a href="../../index%20.html">Home</a></li>
-          <li><a href="../../index%20.html#products">PHANTOM Collection</a></li>
-          <li><a href="../../index%20.html#shop">All Products</a></li>
-          <li><a href="../../index%20.html#about">Why Choose Us</a></li>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../index.html#products">PHANTOM Collection</a></li>
+          <li><a href="../../index.html#shop">All Products</a></li>
+          <li><a href="../../index.html#about">Why Choose Us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>

@@ -119,6 +119,32 @@ function closeCart() {
     .setAttribute("aria-hidden", "true");
 }
 
+function openProductMenu() {
+  closeCart();
+  document.getElementById("productMenuPanel").classList.add("open");
+  document.getElementById("productMenuBackdrop").classList.add("open");
+  document
+    .getElementById("productMenuPanel")
+    .setAttribute("aria-hidden", "false");
+  document
+    .getElementById("productMenuButton")
+    .setAttribute("aria-expanded", "true");
+  document.getElementById("closeProductMenu").focus();
+}
+
+function closeProductMenu() {
+  const menu = document.getElementById("productMenuPanel");
+  if (!menu.classList.contains("open")) return;
+
+  menu.classList.remove("open");
+  document.getElementById("productMenuBackdrop").classList.remove("open");
+  menu.setAttribute("aria-hidden", "true");
+  document
+    .getElementById("productMenuButton")
+    .setAttribute("aria-expanded", "false");
+  document.getElementById("productMenuButton").focus();
+}
+
 function addToCart() {
   if (hasSizeOptions && !selectedSize) {
     alert(
@@ -215,6 +241,18 @@ document
   .getElementById("cartBackdrop")
   .addEventListener("click", closeCart);
 document
+  .getElementById("productMenuButton")
+  .addEventListener("click", openProductMenu);
+document
+  .getElementById("closeProductMenu")
+  .addEventListener("click", closeProductMenu);
+document
+  .getElementById("productMenuBackdrop")
+  .addEventListener("click", closeProductMenu);
+document.querySelectorAll(".product-menu-nav a").forEach((link) => {
+  link.addEventListener("click", closeProductMenu);
+});
+document
   .getElementById("increaseCartQuantity")
   .addEventListener("click", () => {
     cartQuantity += 1;
@@ -257,6 +295,7 @@ document
   });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
+    closeProductMenu();
     closeCart();
     closeOrderModal();
     closeProductImageZoom();
